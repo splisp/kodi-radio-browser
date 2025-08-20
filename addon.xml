@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.audio.radiobrowser" name="Radio-Browser.info" version="1.2.0" provider-name="sailor">
   <requires>
-    <import addon="xbmc.python" version="2.24.0"/>
+    <import addon="xbmc.python" version="3.0.0"/>
+    <import addon="script.module.web-pdb" version="1.5.6"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="main.py">
     <provides>audio</provides>
@@ -24,6 +25,15 @@ Vermisst du deine Lieblingsstation? Kein problem: geh auf www.radio-browser.info
     <description lang="it">Elenco di stazioni radio che usa www.radio-browser.info come fonte.
 
 Se non trovi la tua stazione preferita, puoi aggiungerla tu andando su www.radio-browser.info!</description>
+    <news>v1.2.0 (2020-06-21)
+- Use new api (api.radio-browser.info)
+
+v1.1.0 (2018-12-17)
+- Add search function
+- Add in-app favorites menu
+
+v1.0.0 (2016-06-19)
+- First working version with basic lists for tags, countries, top 100s</news>
     <license>GNU General Public License, Version 3</license>
     <website>https://www.radio-browser.info</website>
     <source>https://github.com/segler-alex/kodi-radio-browser</source>
