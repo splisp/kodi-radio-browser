@@ -2,16 +2,21 @@ import sys
 import urllib.request
 import urllib.error
 import urllib.parse
+import socket
+import random
 import xbmc
 import xbmcvfs
 import xbmcgui
 import xbmcplugin
 import xbmcaddon
-import xbmcvfs
 import json
 import base64
 
+# Uncomment this import to enable debugging using the web_pdb addon
 # import web_pdb;
+#
+# Dynamic breakpoints are not supported:
+# put this line in the code where you want the debugger to break
 # web_pdb.set_trace()
 
 
@@ -26,10 +31,8 @@ xbmcplugin.setContent(addon_handle, 'songs')
 
 my_stations = {}
 profile = xbmcvfs.translatePath(addon.getAddonInfo('profile'))
-mystations_path = profile+'/mystations.json'
+mystations_path = profile + '/mystations.json'
 
-import socket
-import random
 
 def get_radiobrowser_base_urls():
     """
@@ -37,8 +40,8 @@ def get_radiobrowser_base_urls():
 
     Returns:
     list: a list of strings
-
     """
+
     hosts = []
     # get all hosts from DNS
     ips = socket.getaddrinfo('all.api.radio-browser.info',
@@ -91,8 +94,8 @@ def downloadFile(uri, param):
 
     Returns:
     a string result
-
     """
+
     paramEncoded = None
     if param != None:
         paramEncoded = json.dumps(param)
@@ -104,7 +107,7 @@ def downloadFile(uri, param):
     req.add_header('User-Agent', 'KodiRadioBrowser/1.2.0')
     req.add_header('Content-Type', 'application/json')
     response = urllib.request.urlopen(req)
-    data=response.read().decode('utf-8')
+    data = response.read().decode('utf-8')
 
     response.close()
     return data
@@ -116,8 +119,8 @@ def downloadApiFile(path, param):
 
     Returns:
     a string result
-
     """
+
     servers = get_radiobrowser_base_urls()
     i = 0
     for server_base in servers:
